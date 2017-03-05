@@ -1,8 +1,16 @@
 # WARNING: command line must be using UTF-8 encoding
+# this script will try to automatically set the correct encoding
 
 import requests
 from lxml import etree
 import urllib
+from encode_CLI import encode_CLI
+
+try:
+	encode_CLI()
+except:
+	input("Failed to change encoding to UTF-8. Output may be displayed incorrectly. "
+		"Press enter to continue.\n")
 
 URL = "http://www-01.ibm.com/software/globalization/terminology/"
 letter_set = list('abcdefghijklmnopqrstuvwxz')
