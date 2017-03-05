@@ -5,12 +5,11 @@ import requests
 from lxml import etree
 import urllib
 from encode_CLI import encode_CLI
+import sys
+import os
 
-try:
-	encode_CLI()
-except:
-	input("Failed to change encoding to UTF-8. Output may be displayed incorrectly. "
-		"Press enter to continue.\n")
+# changes CLI encoding to utf-8
+os.system("chcp 65001")
 
 URL = "http://www-01.ibm.com/software/globalization/terminology/"
 letter_set = list('abcdefghijklmnopqrstuvwxz')
