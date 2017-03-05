@@ -4,8 +4,6 @@
 import requests
 from lxml import etree
 import urllib
-from encode_CLI import encode_CLI
-import sys
 import os
 
 # changes CLI encoding to utf-8
