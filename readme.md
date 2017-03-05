@@ -1,3 +1,5 @@
+### This script is not ready to be used yet.
+
 ### Why did I do it?
 
 I do freelance translation work in the computer software & hardware industry, so IBM Glossary would be very useful to me. I use the CAT tool OmegaT to aid me in the translation, so this script was made with OmegaT in mind.
