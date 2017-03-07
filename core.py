@@ -7,7 +7,6 @@ import urllib
 import os
 import tkinter
 from tkinter.filedialog import askdirectory, askopenfilename
-import sys
 
 # changes CLI encoding to utf-8
 # os.system("chcp 65001")
