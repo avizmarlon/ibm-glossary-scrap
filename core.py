@@ -1,11 +1,8 @@
-# WARNING: command line must be using UTF-8 encoding
-# this script will try to automatically set the correct encoding
-
 import requests
-from lxml import etree
 import urllib
 import os
 import tkinter
+from lxml import etree
 from tkinter.filedialog import askdirectory, askopenfilename
 
 # changes CLI encoding to utf-8
@@ -22,7 +19,6 @@ letter_set.append('glossary_')
 # /terminology/c.html
 # /terminology/d.html
 # and so on...
-
 glossary = {}
 
 for letter in letter_set:
@@ -53,6 +49,8 @@ for letter in letter_set:
 	glossary_data = ['word', 'definition']
 	print("[*] Creating xpath root structure...")
 	try:
+		# ibm designed the page node structure for letter "b" slightly different, so we make
+		# a specific 
 		if letter == "b":
 			root = tree.xpath('//div[@id="ibm-content-main"]/div/div[1]')	
 		else:
@@ -67,6 +65,7 @@ for letter in letter_set:
 	for element in root[0].iter():
 		if element.tag not in valid_tags:
 			continue
+
 		# we create these children nodes structure to check the
 		# nested tags inside each <p> and <ol> tags
 		# because the information we want are in tags that have specific subtags
@@ -148,7 +147,6 @@ for letter in letter_set:
 
 # CREATE TXT FILE WITH SCRAPED DATA
 tkinter_root = tkinter.Tk().withdraw() # hides tkinter main window
-
 filename = input("Give the glossary txt file a name (same rules as your OS's).\n/>")
 if not filename.endswith(".txt"):
 	filename += ".txt"
