@@ -7,9 +7,10 @@ import urllib
 import os
 import tkinter
 from tkinter.filedialog import askdirectory, askopenfilename
+import sys
 
 # changes CLI encoding to utf-8
-os.system("chcp 65001")
+# os.system("chcp 65001")
 
 URL = "http://www-01.ibm.com/software/globalization/terminology/"
 letter_set = list('abcdefghijklmnopqrstuvwxz')
@@ -145,17 +146,19 @@ for letter in letter_set:
 			# print(definition)
 			# print('\n')
 
-# CREATE TXT FILE WITH SCRAPED DATA
 
-filename = input("Give the glossary txt file a name (same rules as your OS's.\n/>")
+# CREATE TXT FILE WITH SCRAPED DATA
+tkinter_root = tkinter.Tk().withdraw() # hides tkinter main window
+
+filename = input("Give the glossary txt file a name (same rules as your OS's).\n/>")
 if not filename.endswith(".txt"):
 	filename += ".txt"
 directory = askdirectory(title="Choose the folder to save the new file") +"/"
 
 # print("[***] Scraped Data [***]")
 for word, definition in sorted(glossary.items()):
-	fhandle = open(directory+filename, 'a')
-	fhandle.write(word + "\t" + definition)
+	fhandle = open(directory+filename, 'a', encoding="utf-8")
+	fhandle.write(word + "\t" + definition + "\n\n")
 	# print("# %s" % (word))
 	# print(definition)
 	# print('\n')
