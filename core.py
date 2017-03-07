@@ -5,6 +5,8 @@ import requests
 from lxml import etree
 import urllib
 import os
+import tkinter
+from tkinter.filedialog import askdirectory, askopenfilename
 
 # changes CLI encoding to utf-8
 os.system("chcp 65001")
@@ -143,8 +145,18 @@ for letter in letter_set:
 			# print(definition)
 			# print('\n')
 
-print("[***] Scraped Data [***]")
+# CREATE TXT FILE WITH SCRAPED DATA
+
+filename = input("Give the glossary txt file a name (same rules as your OS's.\n/>")
+if not filename.endswith(".txt"):
+	filename += ".txt"
+directory = askdirectory(title="Choose the folder to save the new file") +"/"
+
+# print("[***] Scraped Data [***]")
 for word, definition in sorted(glossary.items()):
-	print("# %s" % (word))
-	print(definition)
-	print('\n')
+	fhandle = open(directory+filename, 'a')
+	fhandle.write(word + "\t" + definition)
+	# print("# %s" % (word))
+	# print(definition)
+	# print('\n')
+fhandle.close()
