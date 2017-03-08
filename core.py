@@ -159,5 +159,5 @@ for word, definition in sorted(glossary.items()):
 	# print("# %s" % (word))
 	# print(definition)
 	# print('\n')
-# print("%d glossary entries found" % (len(glossary)))
+print("%d glossary entries found" % (len(glossary)))
 fhandle.close()
